@@ -16,11 +16,12 @@
     $.getJSON( "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb", function( data ) {
       json1 = data;
     });
-    $("p").append(json1);
+    $("p").append(lol);
     var info = jQuery.parseJSON(json1);
+    $("p").append(info.temp);
   }); 
 </script>
 
-<p> Testing3 </p>
+<p> Testing101 </p>
     
 </html>
