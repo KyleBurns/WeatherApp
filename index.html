@@ -12,16 +12,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  
 <script>  
   $(document).ready(function(){
-    var json1;
-    $.getJSON( "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb", function( data ) {
-      json1 = data;
+    $.ajax({
+        type: "get",
+        url: "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb",
+        dataType: "xml",
+        success: function(data) {
+            $("p").append(data);
+        },
+        error: function(xhr, status) {
+            /* handle error here */
+        }
     });
-    $("p").append("lol");
-    $("p").append(json1);
-    $("p").append("test");
   }); 
 </script>
 
-<p> Testing1 </p>
+<p> Testing </p>
     
 </html>
