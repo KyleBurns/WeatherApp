@@ -15,7 +15,9 @@
   <script>  
     $(document).ready(function(){
     var json1;
-    $.getJSON( "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb", function( data ) {json1 = data;});
+    $.getJSON( "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb", function( data ) {
+        json1 = data;
+    });
     var info = jQuery.parseJSON(json1);
     $("p").append(json1);
     }); 
