@@ -12,10 +12,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  
 <script>  
   $(document).ready(function(){
-  $("p").append("hello");
+    var json1;
+    $.getJSON( "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb", function( data ) {
+      json1 = data;
+    });
+    $("p").append("Some appended text.");
+    var info = jQuery.parseJSON(json1);
   }); 
 </script>
 
-<p> Testing1 </p>
+<p> Testing2 </p>
     
 </html>
