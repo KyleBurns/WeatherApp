@@ -16,11 +16,14 @@
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("demo").innerHTML = this.responseText;
       }
+    else {
+        document.getElementById("demo").innerHTML = "whyyyyyy";
+    }
      };
      xhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb", true);
      xhttp.send();
 </script>
 
-<p id="demo"> Testing1 </p>
+<p id="demo"> Testing12 </p>
     
 </html>
