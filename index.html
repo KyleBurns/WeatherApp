@@ -8,20 +8,19 @@
      <h2 id="project_tagline">Simple weather app</h2>
   </header>
   </div>
- 
-<div id="api">
-  <p id="test"> Test </p>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  
-  <script>  
-    $(document).ready(function(){
-    var json1;
-    $.getJSON( "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb", function( data ) {
-        json1 = data;
-    });
-    var info = jQuery.parseJSON(json1);
-    $("#test").append("hello");
-    }); 
-  </script>
-</div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  
+<script>  
+  $(document).ready(function(){
+  var json1;
+  $.getJSON( "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb", function( data ) {
+      json1 = data;
+  });
+  var info = jQuery.parseJSON(json1);
+  $("p").append("hello");
+  }); 
+</script>
 
+<p> Testing </p>
+    
 </html>
