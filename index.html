@@ -32,7 +32,7 @@
       document.getElementById("demo").innerHTML = "The current temperature in Glasgow is "+ temp.toFixed(1) + " degrees Celsius. <br> The weather is " + currentWeather + ". <br>" + "The wind is travelling at " + wind + " m/s, at " + windDeg + " degrees. <br>" + "The pressure is " + pressure + " hpa and the humidity is " + humidity + "%."
       ;
       }
-     else{ document.getElementById("demo").innerHTML = "Weather data could not be found at this time."
+     else{ document.getElementById("demo").innerHTML = "Weather data could not be found at this time.";}
      };
      xhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb", true);
      xhttp.send();
