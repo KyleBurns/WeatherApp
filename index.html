@@ -11,13 +11,15 @@
  
 <div id="api">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  
-  <p> Test </p>
+  <p> Test12 </p>
   <script>  
     $(document).ready(function(){
     $.getJSON( "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb", function( data ) {
-        $("p").html("Hello <b>world</b>!");
-    });
-    });  
+      $.each(result, function(i, field){
+        $("p").append(field + " ");
+            });
+        });
+    }); 
   </script>
 </div>
 
