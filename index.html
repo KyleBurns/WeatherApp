@@ -9,23 +9,17 @@
   </header>
   </div>
     
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>  
 <script>  
-  $(document).ready(function(){
-    $.ajax({
-        type: "get",
-        url: "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb",
-        dataType: "xml",
-        success: function(data) {
-            $("p").append(data);
-        },
-        error: function(xhr, status) {
-            /* handle error here */
-        }
-    });
-  }); 
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+      }
+     };
+     xhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb", true);
+     xhttp.send();
 </script>
 
-<p> Testing </p>
+<p id="demo"> Testing123 </p>
     
 </html>
