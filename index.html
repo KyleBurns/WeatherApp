@@ -1,5 +1,6 @@
 <html>
-    
+<meta charset="UTF-8">    
+
 <div id="header_wrap" class="outer">
    <header class="inner">
    
@@ -11,34 +12,44 @@
      
      <a id="forkme_banner" href="https://github.com/KyleBurns">Github</a>
      
-     <h1 id="project_title">Hymans Robertson</h1>
-     <h2 id="project_tagline">Simple weather app by Kyle Burns</h2>
+     <h1 id="project_title">Weather test</h1>
+     <h2 id="project_tagline">Simple weather app</h2>
   </header>
   </div>
     
 <script>  
-    var xhttp = new XMLHttpRequest();
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(main);
+	} else { 
+		document.getElementById("lat").innerHTML = "Update your browser, c'mon bro";
+	}
+	function main(position) {
+	var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var data = this.responseText;
       var weather = JSON.parse(data);
-      var temp = parseFloat(JSON.stringify(weather.main.temp)) - 273;  
+	  var name = JSON.stringify(weather.name);  
+      var temp = parseFloat(JSON.stringify(weather.main.temp)) - 273.15;  
       var currentWeather = JSON.stringify(weather.weather[0].description);
       var wind = JSON.stringify(weather.wind.speed);
       var windDeg = JSON.stringify(weather.wind.deg);
       var pressure = JSON.stringify(weather.main.pressure);
       var humidity = JSON.stringify(weather.main.humidity);
       
-      document.getElementById("demo").innerHTML = "The current temperature in Glasgow is "+ temp.toFixed(1) + " degrees Celsius. <br> The weather is " + currentWeather + ". <br>" + "The wind is travelling at " + wind + " m/s, at " + windDeg + " degrees. <br>" + "The pressure is " + pressure + " hpa and the humidity is " + humidity + "%."
+      document.getElementById("demo").innerHTML = "The current temperature in " + name.substring(1,name.length-1) + " is " + temp.toFixed(1) + " degrees Celsius. <br> The weather is " + currentWeather + ". <br>" + "The wind is travelling at " + wind + " m/s, at " + windDeg + " degrees. <br>" + "The pressure is " + pressure + " hpa and the humidity is " + humidity + "%."
       ;
+	  document.getElementById("lat").innerHTML = "Latitude: " + position.coords.latitude + ", <br> Longitude: " + position.coords.longitude;
       }
      else{ document.getElementById("demo").innerHTML = "Weather data could not be found at this time.";}
      };
-     xhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Glasgow,uk&appid=6d80331ad921ea8a8d698388efab69fb", true);
+     xhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&appid=6d80331ad921ea8a8d698388efab69fb", true);
      xhttp.send();
+	 }
 </script>
 
 <p id="demo"></p>
+<p id="lat"></p>
 <h6> Source: OpenWeatherMap</h6>
     
 </html>
